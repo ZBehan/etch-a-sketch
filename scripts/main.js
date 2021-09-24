@@ -1,7 +1,7 @@
 const gridContainer = document.getElementById('grid');
 
 // take in user input for grid size e.g. 16 x 16
-const gridSize = 16;
+const gridSize = 10;
 
 function createGrid(gridSize) {
     // create 16 rows
@@ -20,11 +20,17 @@ function createGrid(gridSize) {
             newCell.classList.add('cell');
             // add newCell to newRow
             newRow.appendChild(newCell);
+
+            newCell.addEventListener('mouseenter', changeCellColour);
         }
 
         // add newRow to gridContainer
         gridContainer.appendChild(newRow);
     }
+}
+
+function changeCellColour(cell) {
+    this.classList.add('black');
 }
 
 createGrid(gridSize);
