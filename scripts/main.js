@@ -1,7 +1,9 @@
 const gridContainer = document.getElementById('grid');
+const clearGridButton = document.getElementById('clear-grid-button');
+clearGridButton.addEventListener('click', resizeGrid);
 
 // take in user input for grid size e.g. 16 x 16
-const gridSize = 10;
+const gridSize = 16;
 
 function createGrid(gridSize) {
     // create 16 rows
@@ -30,7 +32,21 @@ function createGrid(gridSize) {
 }
 
 function changeCellColour(cell) {
-    this.classList.add('black');
+    cell.target.classList.add('black');
+}
+
+function resizeGrid() {
+    const userInput = prompt("What size do you want? Between 8 and 64.");
+    // remove all elements in currently in grid
+    deleteGrid();
+    // create grid at user input size
+    createGrid(userInput);
+}
+
+function deleteGrid() {
+    // delete all items
+    // might be able to redo the createGrid function to return an element and put it in the replaceChildren() funcction
+    gridContainer.replaceChildren();
 }
 
 createGrid(gridSize);
