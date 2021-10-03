@@ -69,4 +69,8 @@ function changeColourInputType(type) {
     console.log(type);
 }
 
+function generateRandomNum(max) {
+    return Math.floor(Math.random() * max);
+}
+
 createGrid(gridSize);
