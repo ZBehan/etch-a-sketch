@@ -1,6 +1,22 @@
 const gridContainer = document.getElementById('grid');
+
 const clearGridButton = document.getElementById('clear-grid-button');
 clearGridButton.addEventListener('click', resizeGrid);
+
+const solidColourButton = document.getElementById('solid-colour-button');
+solidColourButton.addEventListener('click', () => {
+    changeColourInputType('solid');
+});
+
+const randomColourButton = document.getElementById('random-colour-button');
+randomColourButton.addEventListener('click', () => {
+    changeColourInputType('random');
+});
+
+const shadeColourButton = document.getElementById('shade-colour-button');
+shadeColourButton.addEventListener('click', () => {
+    changeColourInputType('shade');
+});
 
 // take in user input for grid size e.g. 16 x 16
 const gridSize = 16;
@@ -47,6 +63,10 @@ function deleteGrid() {
     // delete all items
     // might be able to redo the createGrid function to return an element and put it in the replaceChildren() funcction
     gridContainer.replaceChildren();
+}
+
+function changeColourInputType(type) {
+    console.log(type);
 }
 
 createGrid(gridSize);
