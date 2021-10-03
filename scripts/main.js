@@ -66,11 +66,15 @@ function deleteGrid() {
 }
 
 function changeColourInputType(type) {
-    console.log(type);
+    console.log(createRandomRGBColour());
 }
 
 function generateRandomNum(max) {
     return Math.floor(Math.random() * max);
+}
+
+function createRandomRGBColour() {
+    return `${generateRandomNum(256)},${generateRandomNum(256)},${generateRandomNum(256)}`;
 }
 
 createGrid(gridSize);
