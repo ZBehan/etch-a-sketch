@@ -20,6 +20,7 @@ shadeColourButton.addEventListener('click', () => {
 
 // take in user input for grid size e.g. 16 x 16
 const gridSize = 16;
+let colourMode = 'solid';
 
 function createGrid(gridSize) {
     // create 16 rows
@@ -48,7 +49,17 @@ function createGrid(gridSize) {
 }
 
 function changeCellColour(cell) {
-    cell.target.classList.add('black');
+    let backgroundColour = '';
+
+    if (colourMode === 'solid') {
+        backgroundColour = 'black';
+    } else if (colourMode === 'random') {
+        backgroundColour = `rgb(${createRandomRGBColour()})`;
+    } else if (colourMode === 'shade') {
+        backgroundColour = '#333';
+    }
+
+    this.style['background-color'] = backgroundColour;
 }
 
 function resizeGrid() {
@@ -66,7 +77,7 @@ function deleteGrid() {
 }
 
 function changeColourInputType(type) {
-    console.log(createRandomRGBColour());
+    colourMode = type;
 }
 
 function generateRandomNum(max) {
