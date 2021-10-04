@@ -36,8 +36,12 @@ button:hover {
     background: #ccc;
 }
 
+button:active {
+    scale: 110%;
+}
+
 button.red:hover {
-    background: red;
+    background: darkred;
     color: white;
     font-weight: bold;
 }
