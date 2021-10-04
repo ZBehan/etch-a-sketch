@@ -21,8 +21,6 @@ shadeColourButton.addEventListener('click', () => {
     changeColourInputType('shade');
 });
 
-// take in user input for grid size e.g. 16 x 16
-const gridSize = 16;
 let colourMode = 'solid';
 
 function createGrid(gridSize) {
@@ -109,4 +107,4 @@ function shadeColour(cell) {
     cell.style['background-color'] = `rgba(${newColour})`;
 }
 
-createGrid(gridSize);
+createGrid(16);
