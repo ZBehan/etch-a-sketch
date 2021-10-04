@@ -12,14 +12,23 @@ body {
 .main-container {
     display: flex;
     flex-direction: column;
-    flex-basis: 720px;
+}
+
+.inner-container {
+    display: flex;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column
 }
 
 #grid {
     display: flex;
     flex-direction: column;
-    height: 720px;
-    width: 720px;
+    flex-grow: 1;
+    height: 500px;
+    width: 500px;
 }
 
 .row {
