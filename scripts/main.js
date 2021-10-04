@@ -37,6 +37,7 @@ function createGrid(gridSize) {
             const newCell = document.createElement('div');
             // add a class "cell" to newCell
             newCell.classList.add('cell');
+            newCell.style['background-color'] = 'rgba(255,255,255)';
             // add newCell to newRow
             newRow.appendChild(newCell);
 
@@ -52,11 +53,11 @@ function changeCellColour(cell) {
     let backgroundColour = '';
 
     if (colourMode === 'solid') {
-        backgroundColour = 'black';
+        backgroundColour = 'rgb(0,0,0)';
     } else if (colourMode === 'random') {
         backgroundColour = `rgb(${createRandomRGBColour()})`;
     } else if (colourMode === 'shade') {
-        backgroundColour = '#333';
+        backgroundColour = shadeColour(this);
     }
 
     this.style['background-color'] = backgroundColour;
@@ -86,6 +87,25 @@ function generateRandomNum(max) {
 
 function createRandomRGBColour() {
     return `${generateRandomNum(256)},${generateRandomNum(256)},${generateRandomNum(256)}`;
+}
+
+function shadeColour(cell) {
+    const amountOfBlack = 25.6;
+    // get current rgb value
+    let currentColour = cell.style['background-color'];
+    // separate the values
+    currentColour = currentColour.replace(/[^\d,.]/g, '') // Use regex to match everything except digits, commands and periods. Replace characters that are matched with nothing.
+        .split(','); // split the resultant string into an array using the comma as the split point
+
+    // reduce each value by the amount of black
+    currentColour[0] = +currentColour[0] - amountOfBlack;
+    currentColour[1] = +currentColour[1] - amountOfBlack;
+    currentColour[2] = +currentColour[2] - amountOfBlack;
+
+    // create a string of the new rgb values
+    const newColour = currentColour.join(',');
+    // apply the new rgb value to the background
+    cell.style['background-color'] = `rgba(${newColour})`;
 }
 
 createGrid(gridSize);
