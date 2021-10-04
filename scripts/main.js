@@ -1,4 +1,7 @@
 const gridContainer = document.getElementById('grid');
+gridContainer.addEventListener('mouseover', (e) => {
+    changeCellColour(e.target);
+})
 
 const clearGridButton = document.getElementById('clear-grid-button');
 clearGridButton.addEventListener('click', resizeGrid);
@@ -40,8 +43,6 @@ function createGrid(gridSize) {
             newCell.style['background-color'] = 'rgba(255,255,255)';
             // add newCell to newRow
             newRow.appendChild(newCell);
-
-            newCell.addEventListener('mouseenter', changeCellColour);
         }
 
         // add newRow to gridContainer
@@ -57,10 +58,10 @@ function changeCellColour(cell) {
     } else if (colourMode === 'random') {
         backgroundColour = `rgb(${createRandomRGBColour()})`;
     } else if (colourMode === 'shade') {
-        backgroundColour = shadeColour(this);
+        backgroundColour = shadeColour(cell);
     }
 
-    this.style['background-color'] = backgroundColour;
+    cell.style['background-color'] = backgroundColour;
 }
 
 function resizeGrid() {
