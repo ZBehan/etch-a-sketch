@@ -63,7 +63,16 @@ function changeCellColour(cell) {
 }
 
 function resizeGrid() {
-    const userInput = prompt("What size do you want? Between 8 and 64.");
+    let keepGoing = true;
+    let userInput;
+
+    while (keepGoing) {
+        userInput = prompt('The grid will be cleared.\nWhat size do you want the new grid? Between 8 and 64.');
+        if (userInput >= 8 && userInput <= 64) {
+            keepGoing = false;
+        }
+    }
+
     // remove all elements in currently in grid
     deleteGrid();
     // create grid at user input size
@@ -93,8 +102,8 @@ function shadeColour(cell) {
     // get current rgb value
     let currentColour = cell.style['background-color'];
     // separate the values
-    currentColour = currentColour.replace(/[^\d,.]/g, '') // Use regex to match everything except digits, commands and periods. Replace characters that are matched with nothing.
-        .split(','); // split the resultant string into an array using the comma as the split point
+    currentColour = currentColour.replace(/[^\d,.]/g, ''); // Use regex to match everything except digits, commands and periods. Replace characters that are matched with nothing.
+    currentColour = currentColour.split(','); // split the resultant string into an array using the comma as the split point
 
     // reduce each value by the amount of black
     currentColour[0] = +currentColour[0] - amountOfBlack;
